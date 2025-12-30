@@ -21,10 +21,10 @@ public class SecurityConfig {
                 .requestMatchers("/about","/logout").permitAll()
         ).formLogin(form->form
                 .loginPage("/login")
-        ).logout(form->form
-                .logoutUrl("/logout")
-
+                .usernameParameter("mobile")
         )
+
+
         ;
         return http.build();
     }
