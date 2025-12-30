@@ -11,11 +11,12 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SecurityConfig {
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http){
+    public SecurityFilterChain filterChain(HttpSecurity http) {
         IO.println("....config......");
-        http.authorizeHttpRequests(request-> request
-                .requestMatchers("/dashboard","/").authenticated()
-                .requestMatchers("/admin","/admin/*","/admin/**").denyAll()
+        http.authorizeHttpRequests(request -> request
+                .requestMatchers("/login").anonymous()//for those who are not logged in
+                .requestMatchers("/dashboard", "/").authenticated()
+                .requestMatchers("/admin", "/admin/*", "/admin/**").denyAll()
                 .requestMatchers("/*.css").permitAll()
                 .requestMatchers("/about").permitAll()
         ).formLogin(Customizer.withDefaults()
