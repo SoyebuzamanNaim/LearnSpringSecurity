@@ -6,5 +6,13 @@
 </head>
 <body>
 <h1>Welcome to Dashboard</h1>
+<form th:action="@{/logout}" method="post">
+    <button
+            type="submit"
+            class="w-full bg-red-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition duration-200 shadow-md"
+    >
+        Yes, Sign Me Out
+    </button>
+</form>
 </body>
 </html>

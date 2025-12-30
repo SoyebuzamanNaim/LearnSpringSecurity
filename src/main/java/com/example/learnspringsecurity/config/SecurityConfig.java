@@ -18,10 +18,13 @@ public class SecurityConfig {
                 .requestMatchers("/dashboard", "/").authenticated()
                 .requestMatchers("/admin", "/admin/*", "/admin/**").denyAll()
                 .requestMatchers("/*.css").permitAll()
-                .requestMatchers("/about").permitAll()
-        ).formLogin(Customizer.withDefaults()
-        ).logout(Customizer.withDefaults()
-        ).rememberMe(Customizer.withDefaults())
+                .requestMatchers("/about","/logout").permitAll()
+        ).formLogin(form->form
+                .loginPage("/login")
+        ).logout(form->form
+                .logoutUrl("/logout")
+
+        )
         ;
         return http.build();
     }
